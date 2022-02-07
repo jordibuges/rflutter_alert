@@ -25,6 +25,7 @@ class Alert {
   final AlertStyle style;
   final EdgeInsets? padding;
   final Widget? image;
+  final String? borderTitle;
   final String? title;
   final String? desc;
   final Widget content;
@@ -45,6 +46,7 @@ class Alert {
     this.style = const AlertStyle(),
     this.padding,
     this.image,
+    this.borderTitle,
     this.title,
     this.desc,
     this.content = const SizedBox(),
@@ -109,6 +111,7 @@ class Alert {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      _getBorderTitle(),
                       _getCloseButton(),
                       Padding(
                         padding: padding ??
@@ -165,6 +168,17 @@ class Alert {
     return onWillPopActive
         ? WillPopScope(onWillPop: () async => false, child: _child)
         : _child;
+  }
+
+  Widget _getBorderTitle() {
+    return style.isBorderTitle ?
+
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 10, 10, 0),
+            child:   Container(
+                alignment: FractionalOffset.topLeft,
+               child: Text(this.borderTitle ?? "", style: this.style.borderTitleStyle,),
+          )) : Container();
   }
 
   /// Returns the close button on the top right

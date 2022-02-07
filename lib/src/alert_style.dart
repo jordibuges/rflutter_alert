@@ -17,9 +17,11 @@ class AlertStyle {
   final ShapeBorder? alertBorder;
   final bool isButtonVisible;
   final bool isCloseButton;
+  final bool isBorderTitle;
   final bool isOverlayTapDismiss;
   final Color? backgroundColor;
   final Color overlayColor;
+  final TextStyle borderTitleStyle;
   final TextStyle titleStyle;
   final TextStyle descStyle;
   final TextAlign titleTextAlign;
@@ -53,11 +55,17 @@ class AlertStyle {
     this.animationType = AnimationType.fromBottom,
     this.animationDuration = const Duration(milliseconds: 200),
     this.alertBorder,
+    this.isBorderTitle = false,
     this.isButtonVisible = true,
     this.isCloseButton = true,
     this.isOverlayTapDismiss = true,
     this.backgroundColor,
     this.overlayColor = Colors.black87,
+    this.borderTitleStyle = const TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal
+    ),
     this.titleStyle = const TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w500,
